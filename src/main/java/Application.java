@@ -14,6 +14,7 @@ public class Application {
 
         SparkSession spark = SparkSession.builder()
                 .appName("Linear Regression Transfer Learning Experiment")
+                .master("spark://lattice-150:8079")
                 .getOrCreate();
 
         JavaSparkContext sparkContext = new JavaSparkContext(spark.sparkContext());
