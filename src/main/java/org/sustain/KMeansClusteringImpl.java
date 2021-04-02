@@ -40,7 +40,7 @@ public class KMeansClusteringImpl {
         Map<String, String> readOverrides = new HashMap<>();
         readOverrides.put("spark.mongodb.input.collection", "county_stats");
         readOverrides.put("spark.mongodb.input.database", "sustaindb");
-        readOverrides.put("spark.mongodb.input.uri", "mongodb://lattice-165:27018");
+        readOverrides.put("spark.mongodb.input.uri", "mongodb://lattice-100:27018");
         ReadConfig readConfig = ReadConfig.create(sparkContext.getConf(), readOverrides);
 
         // Load mongodb rdd and convert to dataset
