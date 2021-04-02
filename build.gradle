@@ -51,8 +51,14 @@ jar {
     }
 }
 
+task copyDependencies(type: Copy) {
+    from configurations.runtimeClasspath
+    into file("$buildDir/libs")
+}
+
 tasks {
     "build" {
         dependsOn(jar)
+        dependsOn(copyDependencies)
     }
 }
