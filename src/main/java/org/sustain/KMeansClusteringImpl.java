@@ -1,8 +1,8 @@
 package org.sustain;
 
 import com.mongodb.spark.config.ReadConfig;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 import org.apache.spark.ml.clustering.KMeans;
 import org.apache.spark.ml.clustering.KMeansModel;
 import org.apache.spark.ml.feature.MinMaxScaler;
@@ -25,7 +25,7 @@ import java.util.Map;
 
 public class KMeansClusteringImpl {
 
-    private static final Logger log = LogManager.getLogger(KMeansClusteringImpl.class);
+    //private static final Logger log = LogManager.getLogger(KMeansClusteringImpl.class);
 
     private int kClusters, maxIterations;
 
@@ -48,7 +48,7 @@ public class KMeansClusteringImpl {
         ReadConfig readConfig = ReadConfig.create(sparkContext.getConf(), readOverrides);
 
         // Load mongodb rdd and convert to dataset
-        log.info("Preprocessing data");
+        //log.info("Preprocessing data");
         Dataset<Row> collection = MongoSpark.load(sparkContext, readConfig).toDF();
         List<String> featuresList = new ArrayList<>(Arrays.asList("median_household_income"));
         Seq<String> features = convertListToSeq(featuresList);
@@ -65,7 +65,7 @@ public class KMeansClusteringImpl {
         featureDF.show(10);
 
         // Scaling
-        log.info("Normalizing features");
+        //log.info("Normalizing features");
         MinMaxScaler scaler = new MinMaxScaler()
                 .setInputCol("features")
                 .setOutputCol("normalized_features");
@@ -75,7 +75,7 @@ public class KMeansClusteringImpl {
         featureDF = featureDF.drop("features");
         featureDF = featureDF.withColumnRenamed("normalized_features", "features");
 
-        log.info("Dataframe after min-max normalization");
+        //log.info("Dataframe after min-max normalization");
         featureDF.show(10);
 
         // KMeans Clustering
@@ -84,9 +84,9 @@ public class KMeansClusteringImpl {
 
         Vector[] vectors = model.clusterCenters();
 
-        log.info("======================== CLUSTER CENTERS =====================================");
+        //log.info("======================== CLUSTER CENTERS =====================================");
         for (Vector vector : vectors) {
-            log.info(vector.toString());
+            //log.info(vector.toString());
         }
 
 
