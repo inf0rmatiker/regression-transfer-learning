@@ -1,3 +1,5 @@
+package org.sustain;
+
 import com.mongodb.spark.config.ReadConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,6 +15,7 @@ import org.apache.spark.sql.Row;
 import com.mongodb.spark.MongoSpark;
 import scala.collection.JavaConverters;
 import scala.collection.Seq;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
