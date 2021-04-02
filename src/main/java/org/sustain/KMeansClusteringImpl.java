@@ -25,7 +25,7 @@ import java.util.Map;
 
 public class KMeansClusteringImpl {
 
-    private static final Logger log = LogManager.getFormatterLogger(KMeansClusteringImpl.class);
+    private static final Logger log = LogManager.getLogger(KMeansClusteringImpl.class);
 
     private int kClusters, maxIterations;
 

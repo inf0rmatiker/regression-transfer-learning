@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Application {
 
-    public static final Logger log = LogManager.getFormatterLogger(Application.class);
+    public static final Logger log = LogManager.getLogger(Application.class);
 
     public static void main(String[] programArgs) {
 
@@ -21,6 +21,6 @@ public class Application {
         kMeansClustering.buildModel(sparkContext);
 
          */
-        log.info("Got here!");
+        log.info("GOT HERE");
     }
 }
