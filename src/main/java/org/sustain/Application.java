@@ -1,11 +1,11 @@
 package org.sustain;
-/*
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-*/
+
 public class Application {
 
-    //public static final Logger log = LogManager.getLogger(Application.class);
+    public static final Logger log = LogManager.getLogger(Application.class);
 
     public static void main(String[] programArgs) {
 
@@ -21,6 +21,6 @@ public class Application {
         kMeansClustering.buildModel(sparkContext);
 
          */
-        System.out.println("GOT HERE");
+        log.info("GOT HERE: LOGGER");
     }
 }
