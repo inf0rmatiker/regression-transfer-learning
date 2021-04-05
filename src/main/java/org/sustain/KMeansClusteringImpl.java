@@ -85,6 +85,12 @@ public class KMeansClusteringImpl {
             System.out.println(vector.toString());
         }
 
+        Dataset<Row> predictDF = model.transform(featureDF).select("GISJOIN", "prediction");
+        predictDF.show(10);
+
+        Dataset<String> jsonResults = predictDF.toJSON();
+        String jsonString = jsonResults.collectAsList().toString();
+        System.out.println(jsonString);
 
 
     }
