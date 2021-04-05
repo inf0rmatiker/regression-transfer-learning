@@ -11,6 +11,8 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.Row;
 import com.mongodb.spark.MongoSpark;
+import org.apache.spark.sql.RowFactory;
+import scala.Function1;
 import scala.collection.JavaConverters;
 import scala.collection.Seq;
 
@@ -85,13 +87,18 @@ public class KMeansClusteringImpl {
             System.out.println(vector.toString());
         }
 
-        Dataset<Row> predictDF = model.transform(featureDF).select("GISJOIN", "prediction");
-        predictDF.show(10);
+        Dataset<Row> predictDF = model.transform(featureDF).select("GISJOIN", "prediction", "features");
+        //predictDF.show(10);
 
+
+        Dataset<Row> groupedPredictions = predictDF.groupBy(predictDF.col("prediction")).df();
+        groupedPredictions.show(10);
+/*
         Dataset<String> jsonResults = predictDF.toJSON();
         String jsonString = jsonResults.collectAsList().toString();
         System.out.println(jsonString);
 
+        */
 
     }
 
